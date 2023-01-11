@@ -26,6 +26,7 @@ jobs:
 
     - name: Build
       run: |
+        ls
         npm install
         npm build
         grunt
