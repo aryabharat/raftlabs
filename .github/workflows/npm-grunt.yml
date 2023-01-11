@@ -16,8 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Change to subfolder
-      run: cd Assignment1
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
@@ -26,6 +24,7 @@ jobs:
 
     - name: Build
       run: |
+        cd Assignment1
         ls
         npm install
         npm build
