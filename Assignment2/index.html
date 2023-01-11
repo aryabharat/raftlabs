@@ -8,6 +8,7 @@
         function highlightPossibleMoves() {
             for (let i = 0; i < 8; i++) {
                 for (let j = 0; j < 8; j++) {
+                    
                     if ((i + j) % 2 === 0) {
                         chessboard.rows[i].cells[j].style.backgroundColor = "white";
                     } else {
@@ -22,8 +23,19 @@
             }
         }
 
+        function cleanBoard() {
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 8; j++) {
+                chessboard.rows[i].cells[j].style.backgroundImage = null;
+                }
+            }
+        }
         function findPossibleMoves(row, col) {
             possibleMoves = [];
+            cleanBoard();
+
+            chessboard.rows[row].cells[col].style.backgroundImage = "url('download.png')";
+            chessboard.rows[row].cells[col].style.backgroundSize = "cover";
             console.log({ row, col })
             if (row > 1) {
                 if (col > 0) {
