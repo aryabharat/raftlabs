@@ -5,7 +5,6 @@ import inquirer, { QuestionCollection } from 'inquirer';
 import { parse } from 'csv-parse';
 import { Parser } from 'json2csv';
 import { Author, Book, Magazines } from './types';
-import { printTable, Table } from 'console-table-printer';
 
 let allBooksAndMag: (Magazines & {
   description: string;
@@ -17,7 +16,6 @@ async function csvToJSON(filePath: string): Promise<any[]> {
   const csvFilePath = path.resolve('src', filePath);
 
   const fileContent = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
-  const results: any[] = [];
 
   return new Promise((res, rej) => {
     parse(
@@ -95,8 +93,7 @@ const questions = [
   {
     type: 'input',
     name: 'value',
-    message: `
-    PRESS 
+    message: `PRESS 
     [1] get book and magazine list
     [2] search book by ISBN
     [3] search book by author email
